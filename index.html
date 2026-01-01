@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EatThis! Edible Landscaping | Permaculture Design</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary-green: #2db84c;
+            --light-green: #5fcc7a;
+            --accent-blue: #2858b5;
+            --light-blue: #4a7dd4;
+            --gray: #8a8d96;
+            --dark-gray: #3d4043;
+            --sage-green: #5a7a62;
+            --cream-bg: #f7f8f4;
+            --white: #ffffff;
+            --text-dark: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--cream-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Merriweather', serif;
+            color: var(--dark-gray);
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+
+        /* --- NAVIGATION --- */
+        header {
+            background-color: var(--primary-green);
+            color: var(--white);
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+    height: 50px;
+    width: auto;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.4));
+}
+
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a:hover {
+            color: var(--cream-bg);
+            transition: 0.3s;
+        }
+
+        .phone-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--white);
+        }
+
+        .phone-link:hover {
+            color: var(--cream-bg);
+        }
+
+        .cta-btn {
+            background-color: var(--accent-blue);
+            padding: 0.5rem 1.2rem;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+
+        .cta-btn:hover { 
+            transform: translateY(-2px); 
+            background-color: var(--light-blue);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background: linear-gradient(rgba(30, 30, 30, 0.5), rgba(30, 30, 30, 0.5)), 
+                url('https://images.unsplash.com/photo-1464226184884-fa280b87c399?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 1rem;
+        }
+
+        .hero-content {
+            background: rgba(0, 0, 0, 0.45);
+            padding: 2.5rem 3rem;
+            border-radius: 12px;
+            backdrop-filter: blur(2px);
+        }
+
+        .hero-logo {
+            max-width: 280px;
+            margin: 0 auto 1.5rem;
+            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        .hero-btn {
+            background-color: var(--primary-green);
+            color: var(--white);
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .hero-btn:hover {
+            background-color: var(--accent-blue);
+            color: var(--white);
+            cursor: pointer;
+        }
+
+        /* --- ABOUT SECTION --- */
+        .section-padding { padding: 4rem 10%; }
+
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .about-text h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent-blue);
+            margin-top: 10px;
+        }
+
+        .about-img img {
+            border-radius: 10px;
+            box-shadow: 10px 10px 0px var(--primary-green);
+        }
+
+        /* --- SERVICES --- */
+        .services {
+            background-color: #eef1e8;
+            text-align: center;
+        }
+
+        .services h2 { margin-bottom: 3rem; font-size: 2.5rem; }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            text-align: left;
+        }
+
+        .service-card:hover { transform: translateY(-5px); }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 { margin-bottom: 0.5rem; color: var(--dark-gray); }
+
+        /* --- GALLERY --- */
+        .gallery h2 { text-align: center; margin-bottom: 2rem; font-size: 2.5rem; }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            height: 250px;
+            overflow: hidden;
+            border-radius: 5px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img { transform: scale(1.05); }
+
+        /* --- CONTACT --- */
+        .contact {
+            background-color: var(--dark-gray);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .contact h2 { color: var(--white); margin-bottom: 1rem; }
+
+        .contact-info {
+            margin: 1.5rem 0;
+        }
+
+        .contact-info a {
+            color: var(--light-green);
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .contact-info a:hover {
+            color: var(--accent-blue);
+        }
+
+        .contact-info p {
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            color: #cccccc;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 2rem auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-form input, .contact-form textarea {
+            padding: 1rem;
+            border: none;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+
+        .contact-form button {
+            background-color: var(--primary-green);
+            color: var(--white);
+            padding: 1rem;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover { background-color: var(--accent-blue); }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #2a2d30;
+            color: #aaaaaa;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Adjust spacing between logos */
+    margin-bottom: 15px;
+}
+
+.footer-logo {
+    max-height: 60px; /* Adjust as needed */
+    width: auto;
+}
+
+
+        footer a {
+            color: var(--light-green);
+        }
+
+        footer a:hover {
+            color: var(--accent-blue);
+        }
+
+        /* --- RESPONSIVE MEDIA QUERIES --- */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero-content { 
+                padding: 1.5rem; 
+                margin: 0 1rem;
+            }
+            .hero-logo { max-width: 200px; }
+            .about { grid-template-columns: 1fr; }
+            .about-img { order: -1; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="#" class="logo">
+                <img src="hls-logo-medium.png" alt="EatThis! Edible Landscaping Logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li>
+                    <a href="tel:+14805286141" class="phone-link">
+                        <i class="fas fa-phone"></i> (480) 528-6141
+                    </a>
+                </li>
+                <li><a href="#contact" class="cta-btn">Get a Quote</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <img src="eatthis-logo-white.png" alt="EatThis! Logo" class="hero-logo">
+            <h1>Turn Your Lawn Into Lunch</h1>
+            <p>Regenerative permaculture design that creates beautiful, productive ecosystems right in your backyard.</p>
+            <a href="#contact" class="hero-btn">Start Your Food Forest</a>
+        </div>
+    </section>
+
+    <section id="about" class="section-padding about">
+        <div class="about-text">
+            <h2>Beyond Organic, Beyond Sustainable</h2>
+            <p>At <strong>EatThis!</strong>, we don't just landscape; we build ecosystems. We believe your yard should work for you.</p>
+            <br>
+            <p>Using permaculture principles, we transform sterile grass lawns into thriving, low-maintenance food forests. Whether you want a simple raised bed herb garden or a complete water-harvesting orchard, we design with nature, not against it.</p>
+            <br>
+            <ul style="list-style: disc; margin-left: 1.5rem;">
+                <li>Regenerate soil health</li>
+                <li>Support native pollinators</li>
+                <li>Harvest fresh, chemical-free food</li>
+            </ul>
+        </div>
+        <div class="about-img">
+            <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Lush permaculture garden with raised beds">
+        </div>
+    </section>
+
+    <section id="services" class="section-padding services">
+        <h2>Our Services</h2>
+        <div class="service-grid">
+            <div class="service-card">
+                <i class="fas fa-tree service-icon"></i>
+                <h3>Food Forests</h3>
+                <p>Multi-layered planting designs that mimic a natural forest but produce fruits, nuts, and berries.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-water service-icon"></i>
+                <h3>Water Harvesting</h3>
+                <p>Swales, rain gardens, and cistern installation to capture water and reduce your irrigation needs.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-seedling service-icon"></i>
+                <h3>Show-Stopping Roses</h3>
+                <p>Custom selection of roses to add to your home's natural bouquet.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-bug service-icon"></i>
+                <h3>Pollinator Habitats</h3>
+                <p>Native wildflower plantings that attract bees, butterflies, and beneficial predatory insects.</p>
+            </div>
+        </div>
+    </section>
+
+<section id="gallery" class="section-padding gallery">
+    <h2>Growing Abundance</h2>
+    <div class="gallery-grid">
+        <div class="gallery-item"><img src="1021211147.jpg" alt="Vegetables"></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Greenhouse"></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Harvest"></div>
+    </div>
+</section>
+
+
+    <section id="contact" class="section-padding contact">
+        <h2>Ready to grow?</h2>
+        <p>Contact us for a free site consultation.</p>
+        
+        <div class="contact-info">
+            <a href="tel:+14805286141"><i class="fas fa-phone"></i> (480) 528-6141</a>
+            <p><i class="fas fa-comment-sms"></i> Text or Voicemail Welcome!</p>
+        </div>
+
+        <form class="contact-form" action="https://formspree.io/f/xaqnqgkr" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <input type="tel" name="phone" placeholder="Phone Number">
+            <textarea name="message" rows="5" placeholder="Tell us about your space..."></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+<footer>
+    <div class="footer-logos">
+        <img src="eatthis-logo-white.png" alt="EatThis! Logo" class="footer-logo">
+        <img src="plant-envy.png" alt="Plant Envy Logo" class="footer-logo">
+        <img src="hls-logo-medium.png" alt="HLS Logo" class="footer-logo">
+    </div>
+    <p>&copy; 2026 Homestead Landscaping & Permaculture Solutions. All rights reserved.</p>
+    <p><a href="tel:+14805286141"><i class="fas fa-phone"></i> (480) 528-6141</a> &mdash; Text & Voicemail</p>
+    <p>Designed with Nature.</p>
+</footer>
+
+
+</body>
+</html>
